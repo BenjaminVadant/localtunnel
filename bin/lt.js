@@ -49,6 +49,10 @@ const { argv } = yargs
   .option('print-requests', {
     describe: 'Print basic request info',
   })
+  .options('apiKey', {
+      default: false,
+      describe: 'Use this option to specify an api key'
+  })
   .require('port')
   .boolean('local-https')
   .boolean('allow-invalid-cert')
@@ -73,6 +77,7 @@ if (typeof argv.port !== 'number') {
     local_key: argv.localKey,
     local_ca: argv.localCa,
     allow_invalid_cert: argv.allowInvalidCert,
+    apiKey: argv.apiKey
   }).catch(err => {
     throw err;
   });
